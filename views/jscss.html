@@ -1,0 +1,60 @@
+<!--为什么直接访问静态资源不会被解析，而加载到页面中，却会被解析，又会被执行 -->
+<!-- ??是如何实现的 ，统一替换外链的域名，方便管理-->
+<html>
+<head>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+
+<style type="text/css">
+.bd{
+	width:900px;
+	height: 700px;
+	border: 1px dashed green;
+	margin: 0 auto;
+}
+</style>
+<link rel="stylesheet" href='http://127.0.0.1:8081/css/css1.css'></style>
+</head>
+<body>
+<div class="bd">
+	<h1 class="class111">h1 有样式，代表css外链被加载</h1>
+	<h2>h2</h2>
+	<h3>h3</h3>
+
+</div>
+<script  src = 'http://127.0.0.1:8081/js/js1.js'></script><!-- 这样没有请求，引用不到 -->
+<script  src = 'http://127.0.0.1:8081/js/js2.js'></script><!-- 必须加上http://才能加载到资源 --> 
+<!-- 需要给外链形式的资源加CDN路径 -->
+
+<script>
+//通过JS获取文件资源
+$(document).ready(function(){
+	$("button").click(function(){
+		$("#div1").load("/try/ajax/demo_test.txt");
+	});
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>使用 jQuery AJAX 修改文本内容</h2></div>
+<button>获取外部内容</button>
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+	console.log("页面中 底部的 JS代码块被加载！");//会被解析并且执行          
+$.ajax({url:"https://api.douban.com/v2/book/1220562",type:"get",data:{type:0},dataType:"jsonp",jsonpName:"ckdataPublic",success: function(data){try {console.log('异步接口1请求成功')}catch (err){}}});
+	$.ajax({
+		type:'get'
+		,url:'https://api.douban.com/v2/book/1220577'
+		,dataType:'jsonp'
+		,jsonpName:'xx'
+		,success:function(data){
+			console.info('异步接口2请求成功'+ data.author[0]);
+		}
+	});                                       
+</script>
+
+

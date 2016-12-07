@@ -1,0 +1,28 @@
+{
+  "name": "gulp-test",
+  "version": "1.1.1",
+  "description": "fdfafasdfasdfafasdf",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^2.5.5",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-less": "^3.3.0"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "aaaa"
+  },
+  "keywords": [
+    "aaa"
+  ],
+  "author": "andy",
+  "license": "ISC"
+}

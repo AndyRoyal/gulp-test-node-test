@@ -1,0 +1,30 @@
+<!--为什么直接访问静态资源不会被解析，而加载到页面中，却会被解析，又会被执行 -->
+
+<html>
+<head>
+<style type="text/css">
+.bd{
+	width:900px;
+	height: 700px;
+	border: 1px dashed green;
+	margin: 0 auto;
+}
+</style>
+
+</head>
+<body>
+<div class="bd">
+	<h1>h1</h1>
+	<h2>h2</h2>
+	<h3>h3</h3>
+
+</div>
+<script  src = '127.0.0.1:8081/js/js1.js'></script><!-- 这样没有请求，引用不到 -->
+<script  src = '//js/js1.js'></script><!-- 这样有请求，也访问不到，路径问题 --> 
+<!-- 需要给外链形式的资源加CDN路径 -->
+
+</body>
+</html>
+<script type="text/javascript">
+	alert(111);//会被解析并且执行                                                     
+</script>
